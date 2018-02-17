@@ -38,3 +38,12 @@ end
 stock_prices_yesterday = [10, 9, 7, 6, 5]
 
 stock_seller(stock_prices_yesterday)
+
+# Complexity is O(n) - Simply the size of the array
+# Why? We need to iterate through the whole array once,
+# therefore it will take us at least the size of the array
+# to complete the algorithm
+
+# How did we solve this?
+# Using a greedy technique, which is a family of algorithms
+# greed isn't always good, but in this particular scenario it worked out well for us
