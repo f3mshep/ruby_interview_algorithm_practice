@@ -1,3 +1,9 @@
+# Given a 2d array that represents meeting times, with the first element in the
+# nested array representing the start time of the meeting, and 2nd element in the
+# nested array representing the end time, merge overlapping meeting times.
+# ex. meeting_merge([[1,2], [7,9], [3,4], [5,6], [7,8]])
+#   //[[1, 2], [5, 6], [7, 9]]
+
 # We could use Ruby's built in sort, not sure
 # if that would be acceptable in interview
 def merge(left, right)
@@ -29,14 +35,12 @@ def meeting_merge(meeting_list)
   sorted_meetings = merge_sort(meeting_list)
   current_meeting = sorted_meetings.first
   merged_meetings = []
-  sorted_meetings.each do |meeting|
-    #if the last meeting was pushed, current_meeting is reset to currently accessed meeting
-    current_meeting = meeting if !current_meeting
+  sorted_meetings.each_with_index do |meeting,index|
     if is_overlap(meeting, current_meeting)
       current_meeting = [current_meeting[0], [meeting.last, current_meeting.last].max]
     else
       merged_meetings.push(current_meeting)
-      current_meeting = nil
+      current_meeting = meeting
     end
   end
   # algorithm can only make 1 decision per element,
