@@ -14,5 +14,5 @@ def reverse_str(str)
   str
 end
 
-#Operates at O(log n)
+#Operates at O(n)
 #Space Complexity O(1)
