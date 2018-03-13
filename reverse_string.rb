@@ -16,3 +16,5 @@ end
 
 #Operates at O(n)
 #Space Complexity O(1)
+
+puts reverse_str("words are fun")
