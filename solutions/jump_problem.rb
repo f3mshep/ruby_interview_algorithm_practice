@@ -10,6 +10,7 @@
 def arr_jumper(num_arr)
   last_index = num_arr.length - 1
   max_index = num_arr.first - 1
+  return true if num_arr.length < 2
   num_arr.each_with_index do |max_jump, curr_index|
     return false if curr_index > max_index
     if curr_index + max_jump > max_index
