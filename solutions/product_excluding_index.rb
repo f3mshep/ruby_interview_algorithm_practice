@@ -30,7 +30,7 @@ def get_products_before_index(int_array)
 end
 
 def efficient_products_no_index(int_array)
-  return [] in if int_array.length == 1
+  return [] if int_array.length == 1
   # anticipates edge case of array of length 1
   results = []
   products_before_index = get_products_before_index(int_array)
@@ -38,7 +38,7 @@ def efficient_products_no_index(int_array)
   product_so_far = 1
   index = int_array.length - 1
   while index >= 0
-    # iterate through product array backwards to calculate 
+    # iterate through product array backwards to calculate
     # the products except for the index
     results[index] = product_so_far * products_before_index[index]
     product_so_far *= int_array[index]
