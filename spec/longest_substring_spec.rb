@@ -8,5 +8,7 @@ describe "#length_of_longest_substring" do
     expect(length_of_longest_substring('c')).to eq(1)
     expect(length_of_longest_substring('dvdf')).to eq(3)
     expect(length_of_longest_substring('au')).to eq(2)
+    expect(length_of_longest_substring('abba')).to eq(2)
+    expect(length_of_longest_substring("tmmzuxt")).to eq(5)
   end
 end
