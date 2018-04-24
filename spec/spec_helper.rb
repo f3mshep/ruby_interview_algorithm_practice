@@ -1,6 +1,7 @@
 require "bundler/setup"
 require "pry"
 require "require_all"
+
 require_all "solutions"
 
 
