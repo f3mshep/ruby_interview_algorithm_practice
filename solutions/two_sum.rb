@@ -18,13 +18,11 @@ end
 def two_sum(nums, target)
   histo = {}
   nums.each_with_index do |num, index|
-    histo[num] = index
-  end
-  nums.each_with_index do |num, index|
     counterpart = target - num
     if histo[counterpart] && histo[counterpart] != index
       return [index, histo[counterpart]]
     end
+    histo[num] = index
   end
   []
 end
