@@ -1,5 +1,5 @@
 # Given an array, and a sum, return true if there are two numbers that add up exactly to the target sum.
-# The array will contain only whole, positive integers.You can only use each number once. 
+# The array will contain only whole, positive integers.You can only use each number once.
 
 sum = 8
 
@@ -21,10 +21,10 @@ end
 
 #hashtables rox my sox
 
-def isSum(numbers, sum)
+def is_sum(numbers, sum)
   # iterate through array, storing each number as a key, value as index
   # iterate through the array again, calculate pair and lookup if pair exists
-  pairs = {} 
+  pairs = {}
   numbers.each_with_index do |number, index|
     pairs[number] = index
   end
