@@ -16,6 +16,14 @@
 #     within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value
 #     is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
 
-def my_atoi(num_str)
+#Fastest possible solution(100% on LeetCode)
 
+INT_MAX = (2 ** 31) - 1
+INT_MIN = (-2 ** 31)
+
+def my_atoi(num_str)
+  my_int = num_str.to_i
+  return INT_MAX if my_int > INT_MAX
+  return INT_MIN if my_int < INT_MIN
+  my_int
 end
