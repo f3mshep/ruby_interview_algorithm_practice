@@ -1,4 +1,5 @@
 # **Binary Search**
+# Using the binary search algorithm, find if an element exists in an array
 
 # An efficient way to find if a number exists in an already sorted array.
 # O(log n)
