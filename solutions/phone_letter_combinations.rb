@@ -39,17 +39,20 @@ class PhoneLetters
 
   def combinator
     return [] if digits.empty?
-    stack_a = NUMBER_MAP[digits.first]
+    stack_a = []
     stack_b = []
-    digits.each do |digit|
-      next if digit == digits.first
-      stack_a.each do |letter_cluster|
-        NUMBER_MAP[digit].each do |letter_digit|
+    digits.each_with_index do |digit,index|
+      NUMBER_MAP[digit].each do |letter_digit|
+        stack_a.each do |letter_cluster|
           stack_b << (letter_cluster + letter_digit)
         end
       end
-      stack_a = stack_b
-      stack_b = []
+      if stack_a.empty?
+        stack_a = NUMBER_MAP[digit]
+      else
+        stack_a = stack_b
+        stack_b = []
+      end
     end
     stack_a
   end
