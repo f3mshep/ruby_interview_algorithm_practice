@@ -1,13 +1,13 @@
 # Given ONLY a node in a single-linked list, delete that node from a linked list. You may assume each node is an instance of the following
-# class: 
+# class:
 
 class LinkedListNode
 
   attr_accessor :value, :next
 
   def initialize(value)
-    @value = value
-    @next  = nil
+    self.value = value
+    self.next  = nil
   end
 end
 
