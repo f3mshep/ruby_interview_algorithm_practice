@@ -58,3 +58,6 @@ class PhoneLetters
   end
 
 end
+
+# this solution somehow beats 100 percent of other leetcode submissions for this
+# problem, runs at 36ms
