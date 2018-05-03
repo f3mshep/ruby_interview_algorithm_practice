@@ -26,7 +26,7 @@ class PhoneLetters
     "abc".chars,
     "def".chars,
     "ghi".chars,
-    "jki".chars,
+    "jkl".chars,
     "mno".chars,
     "pqrs".chars,
     "tuv".chars,
@@ -38,6 +38,7 @@ class PhoneLetters
   end
 
   def combinator
+    return [] if digits.empty?
     stack_a = NUMBER_MAP[digits.first]
     stack_b = []
     digits.each do |digit|
