@@ -1,30 +1,37 @@
 require 'pry'
 
-FIXNUM_MAX = (2**(0.size * 8 -2) -1)
-FIXNUM_MIN = -(2**(0.size * 8 -2))
+# Starting from a 0 index, return the nth Fibonacci number.
 
-def divide_two_integers(dividend, divisor)
-  return FIXNUM_MAX if dividend > FIXNUM_MAX || dividend < FIXNUM_MIN
-  current_total = dividend.abs
-  subtractor = divisor.abs
-  result = 0
-  is_negative = get_sign(dividend, divisor)
-  while current_total >= 0
-    return is_negative ? -(result) : result if current_total - subtractor < 0
-    current_total -= subtractor
-    result += 1
+# fib(0)   => 0
+# fib(1)   => 1
+# fib(2)   => 1
+# fib(3)   => 2
+# fib(4)   => 3
+
+#iterative stack
+
+def fibb(n)
+  return n if n < 2
+  count = n
+  prev = 0
+  current = 1
+  while count > 1
+    temp = prev + current
+    prev = current
+    current = temp
+    count -= 1
   end
-  is_negative ? -(result) : result
+  current
 end
 
-def get_sign(dividend, divisor)
-  if dividend > 0 && divisor > 0
-    false
-  elsif dividend < 0 && divisor < 0
-    false
-  else
-    true
-  end
+def recursive_fibb(n)
+  puts "n is currently: " + n.to_s
+  return n if n < 2
+
+  return recursive_fibb(n - 1) + recursive_fibb(n - 2)
 end
 
-binding.pry
+#how does this black magic recursive fuckery work?
+
+puts "\n"
+puts 'final answer ' + recursive_fibb(6).to_s
