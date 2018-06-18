@@ -8,7 +8,7 @@
 
 # => [1,2,3,4,8,12,16,15,14,13,9,5, 6,7,11,10]ge
 
-def enter_the_matrix(n)
+def ugly_enter_the_matrix(n)
   matrix = generate_grid(n)
   res = []
   is_horz_first = true
@@ -66,9 +66,23 @@ def generate_grid(n)
   res
 end
 
+  #shift the first row into the results array
+  #pop the last element of each array into the results array
+  #pop the last row into the results array
+  #shift the first element of each arary into the results array
+  #print the results array
+
 def enter_the_matrix(n)
-  #shift the first row
-  #pop each column
-  #pop the last row
-  #shift the first row
+  matrix = generate_grid(n)
+  res = []
+  begin
+  while true
+    res += matrix.shift
+    matrix.each {|row| res << row.pop}
+    res += matrix.pop.reverse!
+    matrix.reverse_each {|row| res << row.shift}
+  end
+  rescue
+    return res
+  end
 end
