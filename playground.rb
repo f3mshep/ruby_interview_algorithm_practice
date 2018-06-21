@@ -1,37 +1,26 @@
-require 'pry'
-
-# Starting from a 0 index, return the nth Fibonacci number.
-
-# fib(0)   => 0
-# fib(1)   => 1
-# fib(2)   => 1
-# fib(3)   => 2
-# fib(4)   => 3
-
-#iterative stack
-
-def fibb(n)
-  return n if n < 2
-  count = n
-  prev = 0
-  current = 1
-  while count > 1
-    temp = prev + current
-    prev = current
-    current = temp
-    count -= 1
+def decode_string(str)
+  int_arr = []
+  chunk = ""
+  res = []
+  str.each_char do |char|
+    if char == "[" && !chunk.empty?
+        res.push(chunk)
+        chunk = ""
+    elsif char == "]" && chunk.empty?
+        times = int_arr.pop
+        res.push(chunk * times)
+        chunk = ""
+    elsif char.to_i != 0
+      int_arr.push(char.to_i)
+    elsif letter?(char)
+      chunk += char
+    end
   end
-  current
+  res.join * int_arr.pop
 end
 
-def recursive_fibb(n)
-  puts "n is currently: " + n.to_s
-  return n if n < 2
-
-  return recursive_fibb(n - 1) + recursive_fibb(n - 2)
+def letter?(char)
+  char =~ /[A-Za-z]/
 end
 
-#how does this black magic recursive fuckery work?
-
-puts "\n"
-puts 'final answer ' + recursive_fibb(6).to_s
+decode_string("4[ab]")
