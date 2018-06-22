@@ -18,11 +18,11 @@ describe "#reoder_linked_list" do
     c = ListNode.new(3)
     b.next = c
     d = ListNode.new(4)
-    c.next =
+    c.next = d
     reorder_linked_list(head)
     expect(node_to_arr(head)).to eq([1,4,2,3])
   end
-  it "reorders a linked list alternating of odd length"
+  it "reorders a linked list alternating of odd length" do
     head = ListNode.new(1)
     b = ListNode.new(2)
     head.next = b
