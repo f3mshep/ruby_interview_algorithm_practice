@@ -1,10 +1,10 @@
 class RandomizedSet
-
+  attr_accessor :set
 =begin
     Initialize your data structure here.
 =end
     def initialize()
-
+      self.set = Hash.new
     end
 
 
@@ -14,7 +14,16 @@ class RandomizedSet
     :rtype: Boolean
 =end
     def insert(val)
+      return false if includes?(val)
+      set[val] = true
+      true
+    end
 
+=begin
+    Returns boolean indicating if set contains value
+=end
+    def includes?(val)
+      set[val] == true
     end
 
 
@@ -24,7 +33,9 @@ class RandomizedSet
     :rtype: Boolean
 =end
     def remove(val)
-
+      return false if !includes?(val)
+      set.delete(val)
+      true
     end
 
 
@@ -33,7 +44,7 @@ class RandomizedSet
     :rtype: Integer
 =end
     def get_random()
-
+      set.keys[rand(0...set.size)]
     end
 
 
