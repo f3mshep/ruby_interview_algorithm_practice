@@ -1,4 +1,4 @@
-def decode_string(str)
+def string_decoder(str)
   int_arr = []
   chunk = ""
   res = []
