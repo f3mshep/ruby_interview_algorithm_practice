@@ -1,11 +1,13 @@
+
+
 describe "RandomizedSet" do
   before(:each){@set = RandomizedSet.new}
   describe "#includes?" do
     it "returns a boolean indicating in value is present" do
       @set.insert(1)
       @set.insert(2)
-      expect(@set.includes?(2).to eq(true))
-      expect(@set.includes?(3).to eq(false))
+      expect(@set.includes?(2)).to eq(true)
+      expect(@set.includes?(3)).to eq(false)
     end
   end
   describe "#insert" do
@@ -39,7 +41,7 @@ describe "RandomizedSet" do
       res = []
       srand(333)
       4.times {res << @set.get_random}
-      expect(res).to eq(1,1,2,3)
+      expect(res).to eq([1,1,2,4])
     end
   end
 end
