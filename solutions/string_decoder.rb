@@ -1,4 +1,4 @@
-def decode_string(str)
+def string_decoder(str)
   int_arr = []
   chunk = ""
   res = []
@@ -22,5 +22,3 @@ end
 def letter?(char)
   char =~ /[A-Za-z]/
 end
-
-decode_string("4[ab]")
