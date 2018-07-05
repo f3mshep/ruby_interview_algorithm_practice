@@ -24,5 +24,3 @@ end
 
 # factorial time ftw... gross.
 # hopefully we don't get a stack overflow!
-
-puts permute("cats")
