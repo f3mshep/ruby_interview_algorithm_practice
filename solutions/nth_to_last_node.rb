@@ -1,4 +1,4 @@
-# Given the head of a singlely linked list, return the nth-to-last element 
+# Given the head of a singlely linked list, return the nth-to-last element
 # of the list
 
 class LinkedListNode
@@ -59,4 +59,24 @@ def kth_to_last_space_optimized(head, k)
   end
 end
 
-puts kth_to_last_space_optimized(a, 2)
+def remove_nth_from_end(head, n)
+    return nil if !head.next
+    fast = head
+    slow = nil
+    count = n
+    while fast.next
+        fast = fast.next
+        if count < 0
+            slow = slow.next
+        elsif count == 0
+            slow = head.next
+        end
+        count -= 1
+    end
+    if !slow
+      head.next = nil
+      return head
+    end
+    slow.next = slow.next.next
+    head
+end
