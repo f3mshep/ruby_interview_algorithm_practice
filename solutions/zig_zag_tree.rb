@@ -32,20 +32,24 @@
 MARKER = "\0"
 
 def zig_zag_tree(root)
-  queue = [MARKER, root]
+  queue = [root, MARKER]
+  vals = []
   traveled = []
-  next_chunk = []
+  zigs = false
+  return traveled if !root
   while queue
-    current_node = queue.pop
-    if current_node == MARKER
-      return traveled if next_chunk.empty?
-      traveled.push(next_chunk)
-      queue = next_chunk + MARKER
-      next_chunk.clear
-    else
-      next_chunk.push(current_node.right) if current_node.right
-      next_chunk.push(current_node.left) if current_node.left
-    end
     current_node = queue.shift
+    if current_node == MARKER
+      vals = vals.reverse if zigs
+      traveled.push(vals)
+      return traveled if queue.empty?
+      vals = []
+      queue.push(MARKER)
+      zigs = !zigs
+    else
+      queue.push current_node.left if current_node.left
+      queue.push current_node.right if current_node.right
+      vals.push(current_node.val)
+    end
   end
 end

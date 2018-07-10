@@ -19,10 +19,21 @@ describe "#zig_zag_tree" do
     a.right = c
     c.left = d
     c.right = e
+    f = TreeNode.new(1)
+    g = TreeNode.new(2)
+    h = TreeNode.new(3)
+    i = TreeNode.new(4)
+    j = TreeNode.new(5)
+    f.left = g
+    f.right = h
+    g.right = i
+    h.right = j
     expect(zig_zag_tree(a)).to eq([
       [3],
       [20,9],
       [15,7]
     ])
+    expect(zig_zag_tree(f)).to eq([[1],[3,2],[4,5]])
+    expect(zig_zag_tree(nil)).to eq([])
   end
 end
