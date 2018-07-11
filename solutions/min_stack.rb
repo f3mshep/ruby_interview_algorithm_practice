@@ -7,7 +7,7 @@
 
 class MinStack
 
-  attr_accessor :stack, :min_stack, :min
+  attr_accessor :stack, :min_stack
 
   def initialize
     self.stack = []
@@ -15,21 +15,13 @@ class MinStack
   end
 
   def pop
-    element = stack.pop
-    if element == min
-      min = min_stack.pop
-    end
-    element
+    min_stack.pop if stack.pop == min_stack.last
   end
 
-  def push(elem)
+  def push(x)
     # push element on to top of stack
-    self.min = elem if !min
-    if elem < min
-      min_stack.push(min)
-      min = elem
-    end
-    stack << elem
+    self.stack << x
+    self.min_stack << x if self.min_stack.empty? || x <= self.min_stack.last
   end
 
   def top
@@ -39,7 +31,7 @@ class MinStack
 
   def get_min
     # return the smallest element in the stack
-    min
+    min_stack.last
   end
 
 end
