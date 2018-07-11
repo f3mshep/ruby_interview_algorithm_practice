@@ -24,6 +24,7 @@ class MinStack
 
   def push(elem)
     # push element on to top of stack
+    self.min = elem if !min
     if elem < min
       min_stack.push(min)
       min = elem
