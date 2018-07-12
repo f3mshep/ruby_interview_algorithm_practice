@@ -36,7 +36,7 @@ describe "#palindrome_linked_list" do
     d = ListNode.new(4)
     e = ListNode.new(5)
     a.next = b
-    b.next = cr
+    b.next = c
     c.next = d
     d.next = e
     f = ListNode.new(1)
