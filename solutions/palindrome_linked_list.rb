@@ -10,30 +10,35 @@
 # Output: true
 
 def palindrome_linked_list(head)
+  # edge cases whoo
   return true if !head || !head.next
-  mid = get_mid(head)
-  current = head
-  prev = nil
+
+  # use fast and slow pointers to find midpoint
+  mid, fast = head, head
+  while fast.next && fast.next.next
+    fast = fast.next.next
+    mid = mid.next
+  end
+  if fast.next
+    is_even = true
+    mid = mid.next
+  end
+
+  current, prev = head,nil
+  # reverse linked list until mid point
   while current != mid
     after = current.next
     current.next = prev
     prev = current
     current = after
   end
-  left, right = prev, after
+  # skip over mid point if length of list is odd
+  current = current.next if !is_even
+  left, right = prev, current
   while left
     return false if left.val != right.val
     left = left.next
     right = right.next
   end
   true
-end
-
-def get_mid(head)
-  slow, fast = head, head
-  while fast.next && fast.next.next
-    fast = fast.next.next
-    slow = slow.next
-  end
-  slow
 end
