@@ -1,5 +1,13 @@
 require "spec_helper"
 
+class TreeNode
+    attr_accessor :val, :left, :right
+    def initialize(val)
+        @val = val
+        @left, @right = nil, nil
+    end
+end
+
 describe "#binary_tree_max_depth" do
   it "returns the max depth of a binary tree" do
     a = TreeNode.new(10)
