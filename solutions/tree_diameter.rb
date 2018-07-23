@@ -1,13 +1,14 @@
-
-def tree_diameter(head)
-  diameter = longest_path(head, 0, 0)
+def depth(node)
+  return 0 if node.nil?
+  left = depth(node.left)
+  right = depth(node.right)
+  @max_depth = [@max_depth, (left + right)].max
+  return [left, right].max + 1
 end
 
-def longest_path(node, length, diameter)
-  return 0 if node.nil?
-  length = length + 1
-  left = longest_path(node.left,length,diameter).first
-  right = longest_path(node.right, length, diameter).first
-  diameter = [left + right, diameter].max
-  return [[left, right].max, diameter]
+def tree_diameter(head)
+  @max_depth = 0
+  return 0 if !head
+  depth(head)
+  @max_depth
 end
