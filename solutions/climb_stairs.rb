@@ -23,5 +23,12 @@
 #   3. 2 steps + 1 step
 
 def climb_stairs(n)
-
+  ways = []
+  (n + 1).times {ways << 0}
+  ways[1] = 1
+  ways[2] = 2
+  return ways[n] if n <= 2
+  (3..n).each {|num|ways[num] = ways[num - 1] + ways[num - 2]}
+  print ways
+  ways[n]
 end
