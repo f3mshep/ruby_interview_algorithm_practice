@@ -21,5 +21,12 @@
 #              Total amount you can rob = 2 + 9 + 1 = 12.
 
 def rob(cash)
-
+  if cash.size < 3
+    return cash.max
+  end
+  cache = [0] * (cash.size + 2)
+  (2...cache.size).each do |index|
+    cache[index] = [(cash[index - 2] + cache[index - 2]), cache[index - 1]].max
+  end
+  cache.last
 end
